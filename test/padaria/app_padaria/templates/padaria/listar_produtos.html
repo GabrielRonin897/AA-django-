@@ -1,0 +1,21 @@
+<!-- app_padaria/templates/listar_produtos.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listagem de Produtos</title>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+
+    {% if produtos %}
+        <ul>
+            {% for produto in produtos %}
+                <li>{{ produto.nome }} - R$ {{ produto.preco }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum produto disponível.</p>
+    {% endif %}
+</body>
+</html>
