@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Criar Pedido</title>
+</head>
+<body>
+    <h1>Criar Pedido</h1>
+    <form method="post" action="{% url 'criar_pedido' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Adicionar Item</button>
+    </form>
+
+    <h2>Lista de Pedidos</h2>
+    <ul>
+        {% for pedido in pedidos %}
+            <li>Pedido {{ pedido.id }} - Data: {{ pedido.data_pedido }}</li>
+            <ul>
+                {% for item in pedido.itempedido_set.all %}
+                    <li>{{ item.produto }} - Quantidade: {{ item.quantidade }} - Valor Total: {{ item.valor_total }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+</body>
+</html>
